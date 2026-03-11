@@ -20,7 +20,7 @@ async function fetchAndWriteExcel() {
 
     const workbook = new ExcelJS.Workbook();
     const sheetDate = (times[0]) ? (times[0].includes('T') ? times[0].split('T')[0] : new Date(times[0]).toISOString().slice(0,10)) : new Date().toISOString().slice(0,10);
-    const sheetName = `forecast_${sheetDate}`; // e.g. forecast_2026-03-11
+    const sheetName = `forecast_${sheetDate}`; // e.g. forecast_YYYY-MM-DD
     const sheet = workbook.addWorksheet(sheetName);
     sheet.columns = [
       { header: 'time', key: 'time', width: 25 },
@@ -56,7 +56,6 @@ async function fetchAndWriteExcel() {
   }
 }
 
-// Google Sheets integration removed; writing to local Excel only
 
 if (require.main === module) {
   // run once immediately
